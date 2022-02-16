@@ -1,6 +1,17 @@
 spring:
   application:
     name: eureka-client-rest
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:/home/andrey/IntellijWorkPlace/springclouddemo/eureka-client-rest/src/main/resources/db/database
+    username: admin
+    password: admin
+  jpa:
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+
 server:
   port: 19880
 eureka:

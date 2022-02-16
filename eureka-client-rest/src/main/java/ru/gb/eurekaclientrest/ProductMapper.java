@@ -4,6 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.gb.modelapi.ProductDto;
 
 @Mapper(componentModel = "spring")
 public abstract class ProductMapper {

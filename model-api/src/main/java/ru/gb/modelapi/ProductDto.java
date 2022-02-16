@@ -1,4 +1,4 @@
-package ru.gb.eurekaclientrest;
+package ru.gb.modelapi;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

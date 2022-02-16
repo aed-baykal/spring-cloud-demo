@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import ru.gb.modelapi.ProductDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,16 +17,16 @@ import java.util.Optional;
 public interface ClientRest {
 
     @GetMapping("/products/info/{id}")
-    Optional<Product> getProductById(@PathVariable Long id);
+    Optional<ProductDto> getProductById(@PathVariable Long id);
 
     @GetMapping("/products/")
-    List<Product> getAllProducts();
+    List<ProductDto> getAllProducts();
 
     @PostMapping("/products/add")
-    void saveProduct(@RequestBody Product product);
+    void saveProduct(@RequestBody ProductDto productDto);
 
     @PutMapping(path = "/products/", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    void updateProduct(@RequestBody Product product);
+    void updateProduct(@RequestBody ProductDto productDto);
 
     @DeleteMapping("/products/delete/{id}")
     void deleteProductById(@PathVariable Long id);

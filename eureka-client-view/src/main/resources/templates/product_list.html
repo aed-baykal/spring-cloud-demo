@@ -18,15 +18,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="product : ${products}">
-            <td th:text="${product.id}"></td>
-            <td th:text="${product.title}"></td>
-            <td th:text="${product.price}"></td>
-            <td th:text="${product.category}"></td>
-            <td><form method="get" th:action="@{${'/change/' + product.id}}">
+        <tr th:each="productDto : ${productDtos}">
+            <td th:text="${productDto.id}"></td>
+            <td th:text="${productDto.title}"></td>
+            <td th:text="${productDto.price}"></td>
+            <td th:text="${productDto.category}"></td>
+            <td><form method="get" th:action="@{${'/change/' + productDto.id}}">
                 <button type="submit" class="btn btn-warning">change</button>
             </form></td>
-            <td><form method="post" th:action="@{${'/delete/' + product.id}}">
+            <td><form method="post" th:action="@{${'/delete/' + productDto.id}}">
                 <button type="submit" class="btn btn-warning">delete</button>
             </form></td>
         </tr>

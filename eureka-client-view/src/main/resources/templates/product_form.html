@@ -5,31 +5,29 @@
 </head>
 <body>
 <h1>Форма добавления/изменения продукта</h1>
-<form method="post" th:action="@{/add}" th:object="${product}">
-
+<form method="post" th:action="@{/add}" th:object="${productDto}">
     <div>
-        <label>
-            id
-            <input type="number" name="id" th:field="*{id}">
-        </label>
+        <label for="id">id</label>
+        <input type="number" name="id" id="id" th:field="*{id}">
         <br>
-        <label>
-            title
-            <input type="text" name="title" th:field="*{title}">
-        </label>
+        <label for="name">title</label>
+            <input type="text" name="title" id="name" th:field="*{title}">
+            <br>
+            <div th:each="err : ${#fields.errors('title')}" th:text="${err}" class="alert alert-danger">
+            </div>
+        <label for="cost">cost</label>
+            <input type="number" name="price" id="cost" th:field="*{price}">
+            <br>
+        <div th:each="err : ${#fields.errors('price')}" th:text="${err}" class="alert alert-danger">
+            </div>
+        <label for="cat">category</label>
+            <input type="text" name="category" id="cat" th:field="*{category}">
+            <br>
+            <div th:each="err : ${#fields.errors('category')}" th:text="${err}" class="alert alert-danger">
+            </div>
+        </div>
         <br>
-        <label>
-            cost
-            <input type="number" name="price" th:field="*{price}">
-        </label>
-        <br>
-        <label>
-            category
-            <input type="text" name="category" th:field="*{category}">
-        </label>
-    </div>
-    <br>
-    <button type="submit">Сохранить</button>
+        <button type="submit">Сохранить</button>
 </form>
 </body>
 </html>

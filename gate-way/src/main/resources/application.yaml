@@ -1,0 +1,28 @@
+server:
+  port: 5555
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: eureka-client-view
+          uri: lb://eureka-client-view
+          predicates:
+            - Path=/**
+        - id: eureka-client-rest
+          uri: ld://eureka-client-rest
+          predicates:
+            - Path=/products/**
+          filters:
+            - StripPrefix=1
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+      fetchRegistry: false

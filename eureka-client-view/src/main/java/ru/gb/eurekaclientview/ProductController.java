@@ -12,11 +12,11 @@ import ru.gb.modelapi.ProductDto;
 import javax.validation.Valid;
 import java.util.List;
 
-
 @Controller
 public class ProductController {
 
     private final ClientRest clientRest;
+    private final static String REDIRECT_GATEWAY = "redirect:http://localhost:5555/all";
 
     public ProductController(ClientRest clientRest) {
         this.clientRest = clientRest;
@@ -43,12 +43,12 @@ public class ProductController {
 
     @PostMapping("/add")
     @Transactional
-    public String saveProduct(@Valid ProductDto productDto, BindingResult bindingResult, Model model) {
+    public String saveProduct(@Valid ProductDto productDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "product_form";
         }
         clientRest.saveProduct(productDto);
-        return "redirect:/all";
+        return REDIRECT_GATEWAY;
     }
 
     @GetMapping("/change/{id}")
@@ -60,7 +60,7 @@ public class ProductController {
     @PostMapping("/delete/{id}")
     public String deleteProduct(@PathVariable Long id) {
         clientRest.deleteProductById(id);
-        return "redirect:/all";
+        return REDIRECT_GATEWAY;
     }
 
 }
